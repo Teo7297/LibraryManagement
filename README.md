@@ -1,10 +1,10 @@
 **DESCRIPTION**\
 This is a small project created for a job interview. The project requirements are described in the file `cpp-TI-library-management.pdf`.
 
-**NOTE**:\
+**NOTE**\
 The following directives work on windows systems.
 
-**REQUIREMENTS**\
+**REQUIREMENTS**
 - Cmake
 - Git
 - An internet connection (download repo + dependencies)
@@ -42,3 +42,21 @@ The only external dependency in this project is the library RapidJSON, an open s
 
 Dependencies are automatically downloaded during CMake configuration thanks to FetchContent.
 
+**REQUIRED FEATURES**
+- Add a book to the library {title, author, pubblication year} (id and status are assigned automatically, it is assumed that an added book is available right away)
+- Search for a book by id, title or author
+- Borrow a book (after selecting it, it's possible to borrow it, marking it unavailable)
+- Return a borrowed book (marked available)
+- Display a list of all the books in the library
+- Save/Load the list of books to disk with JSON format
+
+**EXTRA FEATURES**
+- Remove a book from the library
+- Remove all the books from the library
+
+**SIDE NOTE**\
+The project satisfies the requirements as they are described in the above mentioned PDF.
+This includes being able to search for a (single) book by author. Of course an author can
+write multiple books and the system supports that, but the search will stop at the first 
+result. The search by ID is better suited for selecting a specific book in case there are 
+multiple written by the same authors.
