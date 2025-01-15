@@ -10,7 +10,7 @@ namespace lms
 }
 
 /// @brief Static App class which only exposes a static method Run().
-/// This will initiate the application loop.
+/// This will initiate the application loop and interact with the underlying library.
 class LibraryApp
 {
 public:
@@ -20,19 +20,24 @@ public:
     static void Run();
 
 private:
+    /// @brief Print the available commands to the console.
+    static void PrintAvailableCommands();
+    /// @brief Get an unsigned integer from the console input.
+    static unsigned int GetInputUInt(const std::string& message);
+    /// @brief Get a string from the console input.
+    static std::string GetInputString(const std::string& message);
+
+    // Command functions, these are the actions that the user can perform
+    // and directly interact with the library.
     static bool TryBorrow(std::shared_ptr<lms::Book> book);
     static void TryReturn();
-    static void PrintAvailableCommands();
-    static void FindById();
-    static void FindByTitle();
-    static void FindByAuthor();
+    static void BorrowById();
+    static void BorrowByTitle();
+    static void BorrowByAuthor();
     static void AddBook();
     static void RemoveBook();
     static void RemoveAllBooks();
 
-    // Some utility functions
-    static unsigned int GetInputUInt(const std::string& message);
-    static std::string GetInputString(const std::string& message);
 
 private:
     static std::unique_ptr<lms::Library> s_library;

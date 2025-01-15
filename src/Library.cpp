@@ -94,7 +94,7 @@ namespace lms
         }
     }
 
-    bool Library::Read(const std::filesystem::path& path)
+    void Library::Read(const std::filesystem::path& path)
     {
         using namespace rapidjson;
 
@@ -102,7 +102,7 @@ namespace lms
         if (!file)
         {
             std::cerr << "[Library] Error opening file: " << path.string() << std::endl;
-            return false;
+            return;
         }
 
         char readBuffer[65536];
@@ -114,7 +114,7 @@ namespace lms
         if (!document.IsArray())
         {
             std::cerr << "[Library] JSON format error: expected an array" << std::endl;
-            return false;
+            return;
         }
 
         m_books.clear();
@@ -123,7 +123,7 @@ namespace lms
             if (!bookObject.IsObject())
             {
                 std::cerr << "[Library] JSON format error: expected an object" << std::endl;
-                return false;
+                return;
             }
 
             std::string title = bookObject["title"].GetString();
@@ -133,11 +133,10 @@ namespace lms
             this->Add(title, author, year);
         }
 
-        std::cout << "[Library] Library loaded from " << path.string() << std::endl;
-        return true;
+        std::cout << "[Library] Library loaded from " << path.c_str() << std::endl;
     }
 
-    bool Library::Write(const std::filesystem::path& path)
+    void Library::Write(const std::filesystem::path& path)
     {
         using namespace rapidjson;
         Document document;
@@ -159,7 +158,7 @@ namespace lms
         if (!file)
         {
             std::cerr << "[Library] Error opening file: " << path.string() << std::endl;
-            return false;
+            return;
         }
 
         char writeBuffer[65536];

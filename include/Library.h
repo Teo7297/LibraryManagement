@@ -4,13 +4,16 @@
 
 namespace lms
 {
+    /// @brief Simple struct that represents a book in the library.
+    /// It only offers a basic constructor for in-place initialization 
+    /// and a str() method to print the book information.
     struct Book
     {
         Book(unsigned int id_, const std::string& title_, const std::string& author_, unsigned int year_, bool available_)
             : id{ id_ }, title{ title_ }, author{ author_ }, year{ year_ }, available{ available_ }
         {
         }
-        ~Book() {};
+        ~Book() = default;
 
         unsigned int id;
         std::string title;
@@ -27,7 +30,7 @@ namespace lms
         }
     };
 
-    // TODO: docs
+    /// @brief Library class that manages a collection of books.
     class Library
     {
     public:
@@ -77,15 +80,14 @@ namespace lms
 
         /// @brief Loads the books from a JSON file
         /// @param path File path
-        /// @return bool (success)
-        bool Read(const std::filesystem::path& path);
+        void Read(const std::filesystem::path& path);
 
         /// @brief Writes the books to a JSON file
         /// @param path File path
-        /// @return bool (success)
-        bool Write(const std::filesystem::path& path);
+        void Write(const std::filesystem::path& path);
 
     private:
+        /// @brief Collection of books
         std::vector<std::shared_ptr<Book>> m_books;
     };
 }

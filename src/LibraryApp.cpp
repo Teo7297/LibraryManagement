@@ -10,9 +10,9 @@ void LibraryApp::Run()
 
     std::unordered_map<std::string, std::function<void()>> commands = {
         {"list", [&]() { s_library->List(); }},
-        {"find1", [&]() { LibraryApp::FindById(); }},
-        {"find2", [&]() { LibraryApp::FindByTitle(); }},
-        {"find3", [&]() { LibraryApp::FindByAuthor(); }},
+        {"select1", [&]() { LibraryApp::BorrowById(); }},
+        {"select2", [&]() { LibraryApp::BorrowByTitle(); }},
+        {"select3", [&]() { LibraryApp::BorrowByAuthor(); }},
         {"add", [&]() { LibraryApp::AddBook(); }},
         {"remove", [&]() { LibraryApp::RemoveBook(); }},
         {"clear", [&]() { LibraryApp::RemoveAllBooks(); }},
@@ -66,23 +66,23 @@ void LibraryApp::PrintAvailableCommands()
     std::string commandList = R"(
 Welcome to the Library Management System!
 Here is a list of available commands:
-list   -> List all books
-find1  -> Find a book by id
-find2  -> Find a book by title
-find3  -> Find a book by author
-add    -> Add a new book
-remove -> Remove a book
-clear  -> Remove all books
-return -> Return a book
-save   -> Save the library to a file
-load   -> Load the library from a file
-quit   -> Close the app
-help   -> Show commands
+list    -> List all books
+select1 -> Select a book by id
+select2 -> Select a book by title
+select3 -> Select a book by author
+add     -> Add a new book
+remove  -> Remove a book
+clear   -> Remove all books
+return  -> Return a book
+save    -> Save the library to a file
+load    -> Load the library from a file
+quit    -> Close the app
+help    -> Show commands
     )";
     std::cout << "\n\n" << commandList << std::endl;
 }
 
-void LibraryApp::FindById()
+void LibraryApp::BorrowById()
 {
     unsigned int id = GetInputUInt("Insert the book id: ");
 
@@ -105,7 +105,7 @@ void LibraryApp::FindById()
         std::cout << "Book successfully borrowed, have a good read!" << std::endl;
 }
 
-void LibraryApp::FindByTitle()
+void LibraryApp::BorrowByTitle()
 {
     std::string title = GetInputString("Insert the book title: ");
 
@@ -128,7 +128,7 @@ void LibraryApp::FindByTitle()
         std::cout << "Book successfully borrowed, have a good read!" << std::endl;
 }
 
-void LibraryApp::FindByAuthor()
+void LibraryApp::BorrowByAuthor()
 {
     std::string author = GetInputString("Insert the author name: ");
 
@@ -189,18 +189,15 @@ unsigned int LibraryApp::GetInputUInt(const std::string& message)
         try
         {
             value = std::stoi(input);
-            if (value > 0)
-                break;
-            else
-                std::cout << "Please enter a valid positive number for the year." << std::endl;
+            break;
         }
         catch (const std::invalid_argument&)
         {
-            std::cout << "Invalid input. Please enter a valid number for the year." << std::endl;
+            std::cout << "Invalid input. Please enter a valid number." << std::endl;
         }
         catch (const std::out_of_range&)
         {
-            std::cout << "The number entered is out of range. Please enter a valid number for the year." << std::endl;
+            std::cout << "The number entered is out of range. Please enter a valid number." << std::endl;
         }
     }
 
