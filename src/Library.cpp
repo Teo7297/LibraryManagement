@@ -133,7 +133,7 @@ namespace lms
             this->Add(title, author, year);
         }
 
-        std::cout << "[Library] Library loaded from " << path.c_str() << std::endl;
+        std::cout << "[Library] Library loaded from " << path.string() << std::endl;
     }
 
     void Library::Write(const std::filesystem::path& path)
