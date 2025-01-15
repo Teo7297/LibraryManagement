@@ -48,7 +48,7 @@ namespace lms
         void RemoveAll();
 
         /// @brief Find a book by its title. IDs can be visualized using the List command.
-        /// Since IDs are the keys of the hashmap, this search will run with O(1) time.
+        /// Since IDs correspond to the index of the books vector, this search will run with O(1) time.
         /// @param id ID of the book
         /// @return shared_ptr<Book>
         std::shared_ptr<Book> FindByID(const unsigned int id) const;
