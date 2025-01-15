@@ -76,7 +76,7 @@ namespace lms
         bool Return(const unsigned int id);
 
         /// @brief Print a list of all the books registered in the library. Each line will also show if a book is available at the moment.
-        void List();
+        void List() const;
 
         /// @brief Loads the books from a JSON file
         /// @param path File path
@@ -84,7 +84,7 @@ namespace lms
 
         /// @brief Writes the books to a JSON file
         /// @param path File path
-        void Write(const std::filesystem::path& path);
+        void Write(const std::filesystem::path& path) const;
 
     private:
         /// @brief Collection of books

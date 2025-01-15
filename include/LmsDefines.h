@@ -10,10 +10,3 @@
 #include <fstream>
 #include <filesystem>
 #include <functional>
-
-// RapidJSON
-#include <rapidjson/document.h>
-#include <rapidjson/writer.h>
-#include <rapidjson/stringbuffer.h>
-#include <rapidjson/filereadstream.h>
-#include <rapidjson/filewritestream.h>

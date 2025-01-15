@@ -1,5 +1,12 @@
 #include "Library.h"
 
+// RapidJSON
+#include <rapidjson/document.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/filewritestream.h>
+
 namespace lms
 {
     void Library::Add(const std::string& title, const std::string& author, const unsigned int year)
@@ -84,7 +91,7 @@ namespace lms
         return true;
     }
 
-    void Library::List()
+    void Library::List() const
     {
 
         for (int i = 0; i < m_books.size(); i++)
@@ -136,7 +143,7 @@ namespace lms
         std::cout << "[Library] Library loaded from " << path.string() << std::endl;
     }
 
-    void Library::Write(const std::filesystem::path& path)
+    void Library::Write(const std::filesystem::path& path) const
     {
         using namespace rapidjson;
         Document document;
