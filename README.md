@@ -31,8 +31,11 @@ cmake --build ./ --config Release --target ALL_BUILD -j 22 --
 
 and run:
 ```
-.\Release\LibraryManagementSystem.exe
+cd ..
+.\build\Release\LibraryManagementSystem.exe
 ```
+Note: Running the app from outside the build directory will make it possible to load the pre-made library.json file.
+Otherwise the file will be created in the CWD the first time added books are saved.
 
 The application will then show a list of available commands that implement the requested features and a couple of extra ones.
 
