@@ -7,6 +7,7 @@ The following directives work on windows systems.
 **REQUIREMENTS**
 - Cmake
 - Git
+- Visual Studio / MSVC (with C++ version 17+)
 - An internet connection (download repo + dependencies)
 
 **SETUP**\
